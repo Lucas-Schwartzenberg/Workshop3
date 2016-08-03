@@ -42,7 +42,7 @@
                 
                 
                 <h:form>
-                    <p:dataTable value="#/{adresBean.findAdressenByKlant( editKlantBean.thisKlant )}" var="Adressen">
+                    <p:dataTable value="#{adresBean.findAdressenByKlant( editKlantBean.thisKlant )}" var="Adressen">
                         <p:column>
                             <f:facet name="header">Adres Id</f:facet>
                                 #{adres.adresId}

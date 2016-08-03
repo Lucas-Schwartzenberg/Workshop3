@@ -11,6 +11,7 @@ import Entity.Koppelklantadres;
 import SessionBean.AdresFacade;
 import SessionBean.KoppelklantadresFacade;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
@@ -50,6 +51,7 @@ public class AdresBean {
     
     public List<Adres> findAdressenByKlant(Klant klant){
         List<Koppelklantadres> listOfAdresKoppels = koppelklantadresFacade.findByIdKlant( klant.getKlantId() );
+        listOfAdressen.clear();
         for (Koppelklantadres kop: listOfAdresKoppels){
             listOfAdressen.add( kop.getAdresId() );
         }
@@ -62,5 +64,10 @@ public class AdresBean {
 
     public void setListOfAdressen(List<Adres> listOfAdressen) {
         this.listOfAdressen = listOfAdressen;
+    }
+    
+    @PostConstruct
+    private void init() {
+        setListOfAdressen(adresFacade.findAll());
     }
 }
