@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/Templates/TemplateWithNavBox.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <p:dataTable value="#{klantBean.findAll()}" var="klant">
+                        <p:column>
+                            <f:facet name="header">Klant Id</f:facet>
+                                #{klant.klantId}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Voornaam</f:facet>
+                                #{klant.voornaam}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Tussenvoegsel</f:facet>
+                               #{klant.tussenvoegsel}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Achternaam</f:facet>
+                                #{klant.achternaam}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Email</f:facet>
+                                #{klant.email}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Actie</f:facet>
+                            <p:commandButton action="#{editKlantBean.startEdit(klant)}" value="Selecteer" update="@form"/>
+                            <p:commandButton action="#{klantBean.remove(klant)}" value="Verwijderen" update="@form"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+                <p:button value="Maak een nieuwe klant aan" outcome="#{editKlantBean.newKlant()}"/>
+                een lijst met klanten!!!!
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

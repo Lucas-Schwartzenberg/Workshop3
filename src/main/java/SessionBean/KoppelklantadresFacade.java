@@ -6,9 +6,11 @@
 package SessionBean;
 
 import Entity.Koppelklantadres;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +29,18 @@ public class KoppelklantadresFacade extends AbstractFacade<Koppelklantadres> {
 
     public KoppelklantadresFacade() {
         super(Koppelklantadres.class);
+    }
+    
+    public List<Koppelklantadres> findByIdKlant(Integer idKlant){
+        Query query = em.createNamedQuery("Koppelklantadres.findByKlantId", Koppelklantadres.class);
+        query.setParameter("klantId", idKlant);
+        return query.getResultList();
+    }
+    
+    public List<Koppelklantadres> findByIdAdres(Integer idAdres){
+        Query query = em.createNamedQuery("Koppelklantadres.findByAdresId", Koppelklantadres.class);
+        query.setParameter("adresId", idAdres);
+        return query.getResultList();
     }
     
 }

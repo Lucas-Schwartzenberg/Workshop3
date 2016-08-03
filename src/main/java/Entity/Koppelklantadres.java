@@ -28,7 +28,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Koppelklantadres.findAll", query = "SELECT k FROM Koppelklantadres k"),
-    @NamedQuery(name = "Koppelklantadres.findByKoppelId", query = "SELECT k FROM Koppelklantadres k WHERE k.koppelId = :koppelId")})
+    @NamedQuery(name = "Koppelklantadres.findByKoppelId", query = "SELECT k FROM Koppelklantadres k WHERE k.koppelId = :koppelId"),
+    @NamedQuery(name = "Koppelklantadres.findByKlantId", query = "SELECT k FROM Koppelklantadres k WHERE k.klantId = :klantId"),
+    @NamedQuery(name = "Koppelklantadres.findByAdresId", query = "SELECT k FROM Koppelklantadres k WHERE k.adresId = :adresId")})
 public class Koppelklantadres implements Serializable {
 
     private static final long serialVersionUID = 1L;
