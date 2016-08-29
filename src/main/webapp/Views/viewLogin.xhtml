@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/Templates/TemplateWithNavBox.xhtml">
+
+            <ui:define name="content">
+            
+                <h:form> 
+                    <title>Inlogpagina</title>
+                    <table>
+                    <tr>
+                        <td>Naam</td>
+                        <td><p:inputText size="30" value="#{loginController.thisLogin.loginnaam}">
+                        <f:validateBean disabled="false"/></p:inputText></td>
+                    </tr>
+                    <tr>
+                        <td>Wachtwoord</td>
+                        <td><p:inputText id="password" size="30" value="#{loginController.surfacePassword}">
+                        <f:validateBean disabled="false"/></p:inputText></td>        
+                    </tr>
+                    </table>
+                    <p:commandButton value="Log in" action="#{loginController.checkPassword()}"/>
+                
+                <br></br>
+                <br></br>
+                    <p:commandButton value="Nieuw Login-Id" action="#{loginController.newLoginID()}"/>
+                </h:form>
+                
+            </ui:define>
+
+
+        </ui:composition>
+
+    </body>
+</html>
