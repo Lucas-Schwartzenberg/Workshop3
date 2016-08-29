@@ -44,7 +44,6 @@ public class EditKlantBean {
         thisKlant = new Klant();
         thisKlant.setVoornaam("Anoniem");
         thisKlant.setAchternaam("Anoniem");
-        thisKlant.setTussenvoegsel("Anoniem");
         thisKlant.setEmail("Anoniem");
         return "viewKlantEdit";
     }
