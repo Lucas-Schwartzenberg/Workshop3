@@ -20,7 +20,12 @@
         </div>
         <div>
             <div id="left">
-                <ui:insert name="left">De navigatie box</ui:insert>
+                <ui:insert name="left">De navigatie box
+                    <p:button value="Index" outcome="/index"/>
+                    <p:button value="Klantenlijst" outcome="/Views/viewKlantLijst"/>
+                    <p:button value="Adressenlijst" outcome="/Views/viewAdresLijst"/>
+                    <p:button value="Inlog Test" outcome="/Views/viewLogin"/>
+                </ui:insert>
             </div>
             <div id="content" class="left_content">
                 <ui:insert name="content">Pagina onder constructie</ui:insert>

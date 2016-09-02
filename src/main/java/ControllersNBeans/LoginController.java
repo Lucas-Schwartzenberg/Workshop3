@@ -12,6 +12,8 @@ import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
 import java.util.List;
+import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
@@ -22,6 +24,7 @@ import javax.inject.Inject;
  */
 @Named(value = "loginController")
 @Dependent
+@Stateless
 public class LoginController {
     
     Login thisLogin;
@@ -54,6 +57,8 @@ public class LoginController {
             return "NoSuchProviderException";
         }
         loginFacade.create(thisLogin);
+        thisLogin = new Login();
+        surfacePassword = null;
         return "Succes";
     }
     
@@ -71,12 +76,14 @@ public class LoginController {
                 }
                 break;
             }
+        thisLogin = new Login();
+        surfacePassword = null;
         
         if (valid) {
             return "loginSucces";
         }
         else {
-            return "viewLogin";
+            return "/index";
         }
     }
     

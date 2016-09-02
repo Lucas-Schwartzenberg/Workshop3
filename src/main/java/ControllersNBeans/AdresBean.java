@@ -33,6 +33,9 @@ public class AdresBean {
     KoppelklantadresFacade koppelklantadresFacade;
     
     Adres thisAdres;
+    Klant thisKlant;
+
+
     List<Adres> listOfAdressen;
 
     /**
@@ -58,6 +61,16 @@ public class AdresBean {
         return listOfAdressen;
     }
     
+    
+    //getters and Setters
+    public Adres getThisAdres() {
+        return thisAdres;
+    }
+
+    public void setThisAdres(Adres thisAdres) {
+        this.thisAdres = thisAdres;
+    }
+    
     public List<Adres> getListOfAdressen() {
         return listOfAdressen;
     }
@@ -66,8 +79,42 @@ public class AdresBean {
         this.listOfAdressen = listOfAdressen;
     }
     
+    public Klant getThisKlant() {
+        return thisKlant;
+    }
+
+    public void setThisKlant(Klant thisKlant) {
+        this.thisKlant = thisKlant;
+    }
+    
+    
+    //???
     @PostConstruct
     private void init() {
         setListOfAdressen(adresFacade.findAll());
+    }
+    
+    // Crud Acties
+    public String create(){
+        thisAdres = new Adres();
+        return "viewAdresEdit";
+    }
+    
+    public void remove(Adres adres){
+        adresFacade.remove(adres);
+    }
+    
+    public String updateThis(Adres adres){
+        thisAdres = adres;
+        return "viewAdresEdit";
+    }
+    
+    public String update(){
+        adresFacade.edit(thisAdres);
+        return "viewAdresEdit";
+    }
+    
+    public void selectThis(Adres adres){
+        thisAdres = adres;
     }
 }

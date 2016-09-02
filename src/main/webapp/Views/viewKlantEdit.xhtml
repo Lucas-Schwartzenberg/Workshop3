@@ -45,14 +45,58 @@
                     <p:dataTable value="#{adresBean.findAdressenByKlant( editKlantBean.thisKlant )}" var="adres">
                         <p:column>
                             <f:facet name="header">Adres Id</f:facet>
-                                #{adres.adresId}
+                            #{adres.adresId}
+                                <p:commandButton action="#{adresBean.selectThis(adres)}" value="Selecteer" update="@form"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">Straatnaam</f:facet>
-                                #{adres.straatnaam}
+                                <p:inputText value="#{adres.straatnaam}"></p:inputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Huisnummer</f:facet>
+                                <p:inputText value="#{adres.huisnummer}"></p:inputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Toevoeging</f:facet>
+                                <p:inputText value="#{adres.toevoeging}"></p:inputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Postcode</f:facet>
+                                <p:inputText value="#{adres.postcode}"></p:inputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Woonplaats</f:facet>
+                                <p:inputText value="#{adres.woonplaats}"></p:inputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Actie</f:facet>
+                                <p:commandButton action="#{adresBean.updateThis(adres)}" value="Selecteer"/>
+                                <p:commandButton action="#{adresBean.remove(adres)}" value="Verwijderen" update="@form"/>
                         </p:column>
                     </p:dataTable>
                 </h:form>
+<!--                
+                <h:form id="adresbar">
+                    <h3>Voeg een adres toe voor deze klant:</h3>
+                    <table>
+                        <tr>
+                        <td>Straatnaam: </td><td><p:inputText value="#//{adresBean.thisAdres.straatnaam}"/></td>
+                        </tr>
+                        <tr>
+                        <td>Huisnummer: </td><td><p:inputText value="#//{adresBean.thisAdres.huisnummer}"/></td>
+                        </tr>
+                        <tr>
+                        <td>Toevoeging: </td><td><p:inputText value="#//{adresBean.thisAdres.toevoeging}"/></td>
+                        </tr>
+                        <tr>
+                        <td>Postcode: </td><td><p:inputText value="#//{adresBean.thisAdres.postcode}"/></td>
+                        </tr>
+                        <tr>
+                        <td>Woonplaats: </td><td><p:inputText value="#//{adresBean.thisAdres.woonplaats}"/></td>
+                        </tr>
+                    </table>
+                    <p:commandButton action="#//{adresBean.add2Klant(thisAdres)}" value="Update" update="@form"/>
+                </h:form>-->
             </ui:define>
 
         </ui:composition>

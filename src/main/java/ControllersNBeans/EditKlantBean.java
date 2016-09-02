@@ -7,12 +7,9 @@ package ControllersNBeans;
 
 import Entity.Klant;
 import SessionBean.KlantFacade;
-import java.util.Map;
-import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
-import javax.faces.bean.ManagedProperty;
 import javax.inject.Inject;
 
 /**

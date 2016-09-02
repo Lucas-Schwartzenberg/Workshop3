@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/Templates/TemplateWithNavBox.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <p:dataTable value="#{adresBean.findAll()}" var="adres">
+                        <p:column>
+                            <f:facet name="header">Adres Id</f:facet>
+                                #{adres.adresId}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Straatnaam</f:facet>
+                                #{adres.straatnaam}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Huisnummer</f:facet>
+                               #{adres.huisnummer}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Toevoeging</f:facet>
+                                #{adres.toevoeging}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Postcode</f:facet>
+                                #{adres.postcode}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Woonplaats</f:facet>
+                                #{adres.woonplaats}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Actie</f:facet>
+                            <p:commandButton action="#{adresBean.updateThis(adres)}" value="Selecteer" update="@form"/>
+                            <p:commandButton action="#{adresBean.remove(adres)}" value="Verwijderen" update="@form"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+                <p:button value="Maak een nieuw adres aan" outcome="#{adresBean.create()}"/>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
