@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/Templates/TemplateWithNavBox.xhtml">
+
+            <ui:define name="content">
+                Koppel een Adres aan een Klant:
+                <h:form> 
+                        <br></br>
+                    <p:outputLabel for="klant" value="Klant: " />
+                    <p:selectOneMenu id="klant" value="#{koppelKABean.selectedKlant}" style="width:150px">
+                        <f:selectItem itemLabel="Kies een klant" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{koppelKABean.klantList}" />
+                    </p:selectOneMenu>
+                        <br></br>
+                    <p:outputLabel for="adres" value="Adres: " />
+                    <p:selectOneMenu id="adres" value="#{koppelKABean.selectedAdres}" style="width:150px">
+                        <f:selectItem itemLabel="Kies een adres" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{koppelKABean.adresList}" />
+                    </p:selectOneMenu>
+                        <br></br>
+                    <p:commandButton action="#{koppelKABean.create()}" value="Koppel"/>
+                </h:form> 
+                
+                
+                
+                
+                
+<!--                <p:button value="Maak een nieuwe klant aan" outcome="#//{editKlantBean.newKlant()}"/>
+                <p:button value="Maak een nieuw adres aan" outcome="#//{adresBean.create()}"/>-->
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
